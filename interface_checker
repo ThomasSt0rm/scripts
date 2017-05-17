@@ -5,7 +5,7 @@
 [ $# -eq 0 ] && { echo "Usage: ./interface_checker.sh INTERFACE_NAME"; exit 1; }
 interface=$1
 
-status=$(ip link show | grep $interface | awk '{ print $9}')
+status=$(ip link show $interface | awk '{ print $9}')
 if [ $status == "DOWN" ]; then
         echo "Interface $interface is down!"
         #ifup $interface
